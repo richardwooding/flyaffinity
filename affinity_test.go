@@ -135,3 +135,20 @@ func TestParseVMs(t *testing.T) {
 		}
 	}
 }
+
+// peerURL must be a valid, parseable HTTP URL. The original bug wrapped the
+// hostname in brackets (only legal for a literal IPv6 address), so every peer
+// fetch failed to build and cluster stats silently fell back to local-only.
+func TestPeerURLParses(t *testing.T) {
+	u := peerURL("811d5d2f471098", "confab-call")
+	if u != "http://811d5d2f471098.vm.confab-call.internal:8080" {
+		t.Fatalf("peerURL = %q", u)
+	}
+	req, err := http.NewRequest(http.MethodGet, u+"/internal/stats", nil)
+	if err != nil {
+		t.Fatalf("peer URL does not build a request: %v", err)
+	}
+	if req.URL.Hostname() != "811d5d2f471098.vm.confab-call.internal" || req.URL.Port() != "8080" {
+		t.Fatalf("parsed host/port wrong: host=%q port=%q", req.URL.Hostname(), req.URL.Port())
+	}
+}

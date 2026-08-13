@@ -69,7 +69,8 @@ func (a *Resolver) Route(sid wire.SessionID, r *http.Request) relay.RouteResult 
 }
 
 // Peers returns the base URLs of the OTHER machines (this one excluded) for the
-// dashboard stats aggregator. Fly 6PN address form: http://[<id>.vm.<app>.internal]:8080.
+// dashboard stats aggregator. Fly 6PN per-machine form:
+// http://<id>.vm.<app>.internal:8080 (a hostname — never bracketed).
 func (a *Resolver) Peers(ctx context.Context) ([]string, error) {
 	ids := a.machines(ctx)
 	out := make([]string, 0, len(ids))
@@ -77,9 +78,17 @@ func (a *Resolver) Peers(ctx context.Context) ([]string, error) {
 		if id == a.self {
 			continue
 		}
-		out = append(out, "http://["+id+".vm."+a.app+".internal]:8080")
+		out = append(out, peerURL(id, a.app))
 	}
 	return out, nil
+}
+
+// peerURL is a machine's private base URL. The Fly per-machine name
+// <id>.vm.<app>.internal is a HOSTNAME — it must NOT be wrapped in brackets
+// (those are only valid around a literal IPv6 address, and http.NewRequest
+// rejects a bracketed hostname).
+func peerURL(id, app string) string {
+	return "http://" + id + ".vm." + app + ".internal:8080"
 }
 
 // machines returns the cached machine-id set (peers + self), refreshing from
