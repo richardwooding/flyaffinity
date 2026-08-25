@@ -13,7 +13,7 @@ func TestOwnerDeterministic(t *testing.T) {
 	peers := []string{"m-aaa", "m-bbb", "m-ccc"}
 	sid := wire.SessionID{1, 2, 3, 4, 5}
 	first := ownerOf(sid, peers)
-	for i := 0; i < 1000; i++ {
+	for range 1000 {
 		if ownerOf(sid, peers) != first {
 			t.Fatal("ownerOf is not deterministic")
 		}
@@ -29,7 +29,7 @@ func TestOwnerMinimalReshuffle(t *testing.T) {
 	three := []string{"m-aaa", "m-bbb", "m-ccc"}
 	const N = 6000
 	moved := 0
-	for i := 0; i < N; i++ {
+	for i := range N {
 		var sid wire.SessionID
 		sid[0], sid[1] = byte(i), byte(i>>8)
 		if ownerOf(sid, two) != ownerOf(sid, three) {

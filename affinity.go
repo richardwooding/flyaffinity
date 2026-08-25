@@ -130,7 +130,7 @@ func (a *Resolver) machines(ctx context.Context) []string {
 func parseVMs(txts []string) []string {
 	var ids []string
 	for _, rec := range txts {
-		for _, entry := range strings.Split(rec, ",") {
+		for entry := range strings.SplitSeq(rec, ",") {
 			if f := strings.Fields(entry); len(f) > 0 {
 				ids = append(ids, f[0])
 			}
