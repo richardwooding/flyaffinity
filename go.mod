@@ -4,7 +4,7 @@ go 1.27.0
 
 require (
 	github.com/coder/websocket v1.8.15
-	github.com/richardwooding/parley v0.6.0
+	github.com/richardwooding/parley v0.6.1
 )
 
 require (

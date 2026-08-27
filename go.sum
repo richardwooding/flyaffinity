@@ -4,8 +4,8 @@ github.com/coder/websocket v1.8.15 h1:6B2JPeOGlpff2Uz6vOEH1Vzpi0iUz20A+lPVhPHtNU
 github.com/coder/websocket v1.8.15/go.mod h1:NX3SzP+inril6yawo5CQXx8+fk145lPDC6pumgx0mVg=
 github.com/fxamacker/cbor/v2 v2.9.2 h1:X4Ksno9+x3cz0TZv69ec1hxP/+tymuR8PXQJyDwfh78=
 github.com/fxamacker/cbor/v2 v2.9.2/go.mod h1:vM4b+DJCtHn+zz7h3FFp/hDAI9WNWCsZj23V5ytsSxQ=
-github.com/richardwooding/parley v0.6.0 h1:jAPAgp8wyqCIbwLB/sSG1KZPn7CrCfRgWnhtdKuRmn0=
-github.com/richardwooding/parley v0.6.0/go.mod h1:g2jk0VmqWc7IhVKVLDCUPjo9t3c3ClSu1pPER+UksKI=
+github.com/richardwooding/parley v0.6.1 h1:r5iPs7fr35XEAEy8Lc+Dc19ktO2cTd9SK4pOv1iHZqU=
+github.com/richardwooding/parley v0.6.1/go.mod h1:g2jk0VmqWc7IhVKVLDCUPjo9t3c3ClSu1pPER+UksKI=
 github.com/schollz/pake/v3 v3.2.0 h1:WKHZVU8ulWRgXTMH6mpynz2cl2tBRo0G1McAcRslB04=
 github.com/schollz/pake/v3 v3.2.0/go.mod h1:prwHym0HhVlVdF5lpClcEhettdT7NDh6QopJtIm4xO4=
 github.com/tscholl2/siec v0.0.0-20240310163802-c2c6f6198406 h1:sDWDZkwYqX0jvLWstKzFwh+pYhQNaVg65BgSkCP/f7U=
